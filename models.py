@@ -117,10 +117,10 @@ class Message:
             return True
 
     @staticmethod
-    def load_all_messages(cursor):
-        sql = "SELECT id, from_id, to_id, text, creation_date FROM messages;"
+    def load_all_messages(cursor, user_id):
+        sql = "SELECT id, from_id, to_id, text, creation_date FROM messages WHERE to_id=%s;"
         messages = []
-        cursor.execute(sql)
+        cursor.execute(sql,(user_id,))
         for row in cursor.fetchall():
             id_, from_id, to_id, text, creation_date = row
             loaded_message = Message(from_id,to_id,text)
