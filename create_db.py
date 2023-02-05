@@ -2,7 +2,7 @@ import psycopg2
 sql = "CREATE DATABASE workshop;"
 sql_u="""CREATE TABLE users(
 id serial,
-username varchar(255),
+username varchar(255) unique,
 hashed_password varchar(80),
 PRIMARY KEY(id)
 );
